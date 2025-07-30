@@ -83,14 +83,16 @@
                 <&kp V &kp LCTRL>;
         };
 
-        toggle_os: toggle_os {
-            compatible = "zmk,behavior-hold-tap";
+        to_mac: to_mac {
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            quick-tap-ms = <200>;
-            flavor = "balanced";
-            bindings = <&to 1>, <&to 0>;
-
-            tapping-term-ms = <200>;
+            bindings = <&macro_tap &to 1>;
+        };
+        
+        to_windows: to_windows {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &to 0>;
         };
     };
 
@@ -183,7 +185,7 @@
         adjust_layer {
             // ------------------------------------------------------------------------------------------------------------
             // |      |     |     |      |      |      |                   |      |       |       |      |       |       |
-            // | BOOT |     |     |      |      |      |                   |      |       |       |      |       |       |
+            // | BOOT |     | MAC |      | WIN  |      |                   |      |       |       |      |       |       |
             // |      |     |     |      |      |      |                   |      | VOLDO | MUTE  | VOLUP|       |       |
             // |      |     |     |      |      |      |        |  |       |      | PREV  | PLAY  | NEXT |       |       |
             //                     |      |      |      |        |  |       |      |       |       |
@@ -191,7 +193,7 @@
             display-name = "Adjust";
             bindings = <
 &trans       &trans  &trans  &trans  &trans          &trans                    &trans  &trans        &trans      &trans        &trans  &trans
-&bootloader  &trans  &trans  &trans  &toggle_os 0 1  &trans                    &trans  &trans        &trans      &trans        &trans  &trans
+&bootloader  &trans  &to_mac &trans  &to_windows     &trans                    &trans  &trans        &trans      &trans        &trans  &trans
 &trans       &trans  &trans  &trans  &trans          &trans                    &trans  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &trans  &trans
 &trans       &trans  &trans  &trans  &trans          &trans  &trans    &trans  &trans  &kp C_PREV    &kp C_PLAY  &kp C_NEXT    &trans  &trans
                              &trans  &trans          &trans  &trans    &trans  &trans  &trans        &trans
