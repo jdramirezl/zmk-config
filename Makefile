@@ -1,4 +1,4 @@
 push:
 	git add .
-	git commit -m "$(MESSAGE)"
+	git commit -m "Changes"
 	git push origin master
