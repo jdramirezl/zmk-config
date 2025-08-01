@@ -17,6 +17,9 @@ manifest:
     - name: nice-view-jdramirezl
       remote: jdramirezl
       revision: main
+    - name: nice-view-gem-jdramirezl
+      remote: jdramirezl
+      revision: main
   self:
     path: config
 
